@@ -26,7 +26,7 @@ It is designed for learning, demonstration, and academic evaluation.
 
 ---
 🛠️ Tech Stack
-Frontend
+## Frontend
 
 React.js
 
@@ -38,7 +38,7 @@ CSS (Custom styling)
 
 ---
 
-Backend
+## Backend
 
 Node.js
 
@@ -116,7 +116,7 @@ Access the application:
 
 Frontend: http://localhost:3000
 
-Backend API: http://localhost:4000
+Backend API: http://localhost:5000
 ```
 ---
 
@@ -174,6 +174,7 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
 
