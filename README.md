@@ -1,143 +1,152 @@
-# Multi-Tenant SaaS Platform
+🚀 Multi-Tenant SaaS Platform
 
-## Description
-A comprehensive B2B SaaS application built to demonstrate **Multi-Tenancy**, **Data Isolation**, and **Role-Based Access Control (RBAC)**. This platform allows organizations (Tenants) to sign up, manage their own isolated workspace, add team members, and track projects and tasks.
+A full-stack Multi-Tenant SaaS Platform that allows multiple organizations (tenants) to securely share the same application while keeping their data isolated. The system supports role-based access, project management, and centralized administration using modern web technologies.
 
-The system features a strict hierarchy where a **Super Admin** manages tenants, **Tenant Admins** manage their organization's data and users, and **Standard Users** work on assigned tasks.
+📌 Project Overview
 
-## Key Features
-* **Multi-Tenancy Architecture:** Complete data isolation between different organizations using Tenant IDs.
-* **Secure Authentication:** JWT-based login with hashed passwords (Bcrypt) and session management.
-* **Role-Based Access Control (RBAC):** Distinct permissions for Super Admins, Tenant Admins, and Users.
-* **Project Management:** Create, update, and track status of projects specific to a tenant.
-* **Task Orchestration:** Assign tasks to team members with priorities and deadlines.
-* **Team Management:** Tenant Admins can invite/remove users and manage their roles.
-* **Super Admin Dashboard:** A global view for system administrators to monitor all registered tenants.
-* **Responsive UI:** A modern, user-friendly Dashboard built with React.
+This project demonstrates how real-world SaaS applications work using multi-tenancy architecture, role-based authentication, and containerized deployment.
+It is designed for learning, demonstration, and academic evaluation.
 
-## Technology Stack
+✨ Key Features
 
-### **Frontend**
-* **Framework:** React.js (v18)
-* **State Management:** React Context API
-* **Routing:** React Router DOM (v6)
-* **HTTP Client:** Axios
-* **Styling:** CSS3 (Responsive Flexbox/Grid)
+🏢 Multi-tenant architecture (organization-wise data isolation)
 
-### **Backend**
-* **Runtime:** Node.js (v18)
-* **Framework:** Express.js
-* **ORM:** Prisma
-* **Security:** JSON Web Tokens (JWT), Bcrypt, CORS
-* **Validation:** Express Validator
+👤 Role-based access (Super Admin, Admin, User)
 
-### **Database & DevOps**
-* **Database:** PostgreSQL (v15)
-* **Containerization:** Docker & Docker Compose
-* **Environment:** Linux (Alpine) containers
+🔐 Secure authentication using JWT
 
-## Architecture Overview
-The application follows a **Client-Server** architecture. The React frontend communicates with the Node.js/Express backend via REST APIs. The backend connects to a PostgreSQL database, ensuring that every query is scoped by `tenant_id` to prevent data leaks between organizations.
+📊 Dashboard with tenant & project insights
+
+🗂️ Project management per tenant
+
+🐳 Fully Dockerized (Frontend + Backend + Database)
+
+🛠️ Tech Stack
+Frontend
+
+React.js
+
+React Router
+
+Context API
+
+CSS (Custom styling)
+
+Backend
+
+Node.js
+
+Express.js
+
+Prisma ORM
+
+PostgreSQL
+
+DevOps & Tools
+
+Docker & Docker Compose
+
+JWT Authentication
+
+bcrypt (password hashing)
+
+🧱 System Architecture (High Level)
+Client (React)
+     ↓
+API Gateway (Express)
+     ↓
+Business Logic
+     ↓
+Database (PostgreSQL)
 
 
+Each tenant’s data is logically separated using tenant IDs.
 
-## Installation & Setup
+👥 User Roles
+Role	Description
+Super Admin	Manages all tenants & system
+Admin	Manages projects within a tenant
+User	Works on assigned projects
+🔑 Default Login Credentials
+Super Admin
 
-### **Prerequisites**
-* Docker & Docker Compose (Recommended)
-* Node.js v18+ (For local non-Docker setup)
-* PostgreSQL (For local non-Docker setup)
+Email: superadmin@system.com
 
-### **Method 1: Docker (Fastest & Recommended)**
-This method automatically sets up the Database, Backend, and Frontend.
+Password: Admin@123
 
-1.  **Clone the Repository**
-    ```bash
-    git clone <your-repo-url>
-    cd Multi-Tenant-SaaS-Platform
-    ```
+Demo User
 
-2.  **Configure Environment**
-    Create a `.env` file in the root directory (or ensure `docker-compose.yml` variables are correct):
-    ```properties
-    POSTGRES_USER=postgres
-    POSTGRES_PASSWORD=postgres
-    POSTGRES_DB=saas_db
-    ```
+Email: user1@demo.com
 
-3.  **Launch Application**
-    ```bash
-    docker-compose up -d --build
-    ```
+Password: User@123
 
-4.  **Access the App**
-    * **Frontend:** [http://localhost:3000](http://localhost:3000)
-    * **Backend Health Check:** [http://localhost:5000/api/health](http://localhost:5000/api/health)
+▶️ How to Run the Project
+Prerequisites
 
-    *Note: The system automatically runs migrations and seeds default data on startup.*
+Docker
 
-### **Method 2: Local Development (Manual)**
+Docker Compose
 
-<details>
-<summary>Click to expand manual setup instructions</summary>
+Steps
+docker-compose down
+docker-compose up --build
 
-1.  **Database Setup**
-    Ensure PostgreSQL is running locally on port 5432.
 
-2.  **Backend Setup**
-    ```bash
-    cd backend
-    npm install
-    cp .env.example .env
-    # Update .env with your local DB credentials
-    npx prisma migrate dev --name init
-    npm run seed
-    npm start
-    ```
+Access the application:
 
-3.  **Frontend Setup**
-    ```bash
-    cd frontend
-    npm install
-    npm start
-    ```
-</details>
+Frontend: http://localhost:3000
 
-## Environment Variables
+Backend API: http://localhost:4000
 
-The application requires the following variables. See `.env.example` in the backend folder.
+🧪 How to Test the Project
 
-| Variable | Description | Default (Docker) |
-| :--- | :--- | :--- |
-| `PORT` | Backend Server Port | `5000` |
-| `DATABASE_URL` | PostgreSQL Connection String | `postgresql://...@database:5432/saas_db` |
-| `JWT_SECRET` | Secret key for signing tokens | (Set your own secure key) |
-| `FRONTEND_URL` | URL for CORS configuration | `http://localhost:3000` |
+Login using Super Admin credentials
 
-## API Documentation
+View tenants and system overview
 
-### **Authentication**
-* `POST /api/auth/register-tenant` - Register a new Organization
-* `POST /api/auth/login` - User Login
+Login as tenant user
 
-### **Projects & Tasks**
-* `GET /api/projects` - List all projects for current tenant
-* `POST /api/projects` - Create a new project
-* `POST /api/projects/:id/tasks` - Add a task to a project
-* `PATCH /api/tasks/:id/status` - Update task status
+Create and view projects
 
-### **Management**
-* `GET /api/tenants` - (Super Admin) List all tenants
-* `GET /api/tenants/:id/users` - (Tenant Admin) List employees
-* `POST /api/tenants/:id/users` - (Tenant Admin) Add employee
+Verify role-based access control
 
-## Testing Credentials (Seed Data)
+📂 Folder Structure (Simplified)
+Multi-Tenant-SaaS-Platform/
+│
+├── frontend/
+│   └── src/
+│
+├── backend/
+│   ├── prisma/
+│   ├── routes/
+│   ├── controllers/
+│   └── seeds/
+│
+├── docker-compose.yml
+└── README.md
 
-**Super Admin:**
-* Email: `superadmin@system.com`
-* Password: `Admin@123`
+🎯 Learning Outcomes
 
-**Tenant Admin (Demo Company):**
-* Email: `admin@demo.com`
-* Password: `Admin@123`
-* Subdomain: `demo`
+Understanding multi-tenant SaaS architecture
+
+Implementing secure authentication & authorization
+
+Using Docker for full-stack deployment
+
+Working with Prisma ORM and PostgreSQL
+
+Building scalable full-stack applications
+
+📌 Future Enhancements
+
+Task management module
+
+Subscription billing
+
+Email notifications
+
+Activity audit logs
+
+CI/CD pipeline integration
+
+
