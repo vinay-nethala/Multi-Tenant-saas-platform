@@ -75,9 +75,9 @@ Each tenant’s data is logically separated using tenant IDs.
 👥 User Roles
 Role	Description
 ```bash
-Super Admin	Manages all tenants & system
-Admin	Manages projects within a tenant
-User	Works on assigned projects
+Super Admin 	"Manages all tenants & system"
+Admin        "Manages projects within a tenant"
+User	        "Works on assigned projects"
 ```
 ---
 🔑 Default Login Credentials
@@ -174,6 +174,7 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
 
