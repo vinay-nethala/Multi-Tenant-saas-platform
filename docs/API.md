@@ -1,367 +1,180 @@
-# Multi-Tenant SaaS Platform – API Documentation
+# 📘 API Documentation
 
-## Authentication & Security
+## Multi-Tenant SaaS Platform
 
-- **Authentication Method:** Bearer Token (JWT)
-- **Header Format:**  
-  `Authorization: Bearer <your_jwt_token>`
-- **Token Expiry:** 24 hours
-- **Base URL (Local):**  
-  `http://localhost:5000/api`
+This document describes all REST APIs used in the **Multi-Tenant SaaS Platform**, including authentication, tenant management, user management, and task management.
 
 ---
 
-## System
+## 🔐 Authentication
 
-### 1. Health Check
+### Login
 
-Checks whether the API server and database connection are healthy.
+**POST** `/api/auth/login`
 
-- **Endpoint:** `GET /health`
-- **Access:** Public
+Authenticate a user and return a JWT token.
 
-#### Response (200 OK)
+**Request Body**
 
 ```json
 {
-  "status": "ok",
-  "database": "connected"
+  "email": "user1@demo.com",
+  "password": "User@123",
+  "tenantSubdomain": "demo"
 }
 ```
 
-## 2. Authentication Module
-
-### 2.1 Register Tenant (Sign Up)
-
-Registers a new **Organization (Tenant)** along with its first **Admin user**.
-
-- **Endpoint:** `POST /auth/register-tenant`
-- **Access:** Public
-
-#### Request Body (JSON)
+**Response (200)**
 
 ```json
 {
-  "tenantName": "Acme Corp",
-  "subdomain": "acme",
-  "adminEmail": "admin@acme.com",
-  "password": "SecurePassword123"
-}
-
-#### Response (201 Created)
-
-```json
-{
-  "message": "Tenant registered successfully",
-  "tenantId": "uuid-string"
-}
-```
-
-### 2.2 Login
-
-Authenticates a user and returns a **JWT access token**.
-
-- **Endpoint:** `POST /auth/login`
-- **Access:** Public
-
-#### Request Body (JSON)
-
-```json
-{
-  "email": "admin@acme.com",
-  "password": "SecurePassword123"
-}
-```
-
-#### Response (200 OK)
-
-```json
-{
-  "token": "eyJhbGciOiJIUzI1NiIsIn...",
+  "token": "jwt_token_here",
   "user": {
     "id": "uuid",
-    "email": "admin@acme.com",
-    "role": "tenant_admin",
-    "tenantId": "uuid"
+    "role": "USER"
   }
 }
 ```
-
-### 2.3 Get Current User
-
-Retrieves the profile of the currently logged-in user.
-
-- **Endpoint:** `GET /auth/me`
-- **Access:** Protected (All Roles)
-
-#### Response (200 OK)
-
-```json
-{
-  "user": {
-    "id": "uuid",
-    "fullName": "John Doe",
-    "email": "john@acme.com",
-    "role": "user"
-  }
-}
-```
-
-## 3️. Tenant Management (Super Admin)
-
-### 3.1 List All Tenants
-
-Retrieves a list of all registered tenants.  
-Accessible only by **Super Admin** users.
-
-- **Endpoint:** `GET /tenants`
-- **Access:** Super Admin
-
-#### Response (200 OK)
-
-```json
-{
-  "status": "success",
-  "results": 2,
-  "data": {
-    "tenants": [
-      { "id": "1", "name": "Acme Corp", "subdomain": "acme" },
-      { "id": "2", "name": "Beta Inc", "subdomain": "beta" }
-    ]
-  }
-}
-```
-
-### 3.2 Get Tenant Details
-
-Retrieves detailed information for a specific tenant.
-
-- **Endpoint:** `GET /tenants/:id`
-- **Access:** Super Admin
-
-#### Response (200 OK)
-
-```json
-{
-  "id": "uuid",
-  "name": "Acme Corp",
-  "status": "active"
-}
-```
-
-### 3.3 Update Tenant
-
-Updates tenant details such as name or status.
-
-- **Endpoint:** `PUT /tenants/:id`
-- **Access:** Super Admin
-
-#### Request Body (JSON)
-
-```json
-{
-  "name": "Acme Global",
-  "status": "inactive"
-}
-```
-
-## 4️. User Management (Tenant Admin)
-
-### 4.1 List Users
-
-Lists all employees within the requester’s tenant.
-
-- **Endpoint:** `GET /tenants/:tenantId/users`
-- **Access:** Tenant Admin
-
-#### Response (200 OK)
-
-```json
-{
-  "data": {
-    "users": [
-      { "id": "u1", "fullName": "Alice", "role": "user" }
-    ]
-  }
-}
-```
-
-### 4.2 Create User
-
-Adds a new employee to the tenant.
-
-- **Endpoint:** `POST /tenants/:tenantId/users`
-- **Access:** Tenant Admin
-
-#### Request Body (JSON)
-
-```json
-{
-  "email": "alice@acme.com",
-  "password": "Password123",
-  "fullName": "Alice Smith",
-  "role": "user"
-}
-```
-
-### 4.3 Update User
-
-Updates an existing user’s profile or role.
-
-- **Endpoint:** `PUT /users/:id`
-- **Access:** Tenant Admin
-
-#### Request Body (JSON)
-
-```json
-{
-  "fullName": "Alice Jones",
-  "role": "tenant_admin"
-}
-```
-
-### 4.4 Delete User
-
-Removes a user from the tenant.
-
-- **Endpoint:** `DELETE /users/:id`
-- **Access:** Tenant Admin
 
 ---
 
-## 5️. Project Management
+### Register Tenant
 
-### 5.1 List Projects
+**POST** `/api/auth/register`
 
-Lists all projects belonging to the requester’s tenant.
+Create a new tenant and admin user.
 
-- **Endpoint:** `GET /projects`
-- **Access:** User / Admin
-
-#### Response (200 OK)
+**Request Body**
 
 ```json
 {
-  "data": {
-    "projects": [
-      { "id": "p1", "title": "Website Redesign", "status": "active" }
-    ]
-  }
+  "companyName": "Demo Company",
+  "adminEmail": "admin@demo.com",
+  "password": "Demo@123"
 }
 ```
-
-### 5.2 Create Project
-
-Creates a new project within the tenant.
-
-- **Endpoint:** `POST /projects`
-- **Access:** Admin
-
-#### Request Body (JSON)
-
-```json
-{
-  "title": "Q3 Marketing Campaign",
-  "description": "Planning for Q3",
-  "status": "active"
-}
-```
-
-### 5.3 Get Project Details
-
-Retrieves detailed information for a specific project.
-
-- **Endpoint:** `GET /projects/:id`
-- **Access:** User / Admin
 
 ---
 
-### 5.4 Update Project
+## 🏢 Tenant Management (Super Admin)
 
-Updates an existing project’s details.
+### Get All Tenants
 
-- **Endpoint:** `PUT /projects/:id`
-- **Access:** Admin
+**GET** `/api/tenants`
 
-#### Request Body (JSON)
+**Headers**
 
-```json
-{
-  "status": "completed"
-}
 ```
-
-> **Note:**  
-> Project deletion functionality is typically mapped to  
-> `DELETE /projects/:id`
+Authorization: Bearer <token>
+```
 
 ---
 
-## 6️. Task Management
+## 👤 User Management
 
-### 6.1 List Tasks
+### Create User
 
-Retrieves all tasks associated with a specific project.
+**POST** `/api/users`
 
-- **Endpoint:** `GET /projects/:projectId/tasks`
-- **Access:** User / Admin
+Create a user under a tenant.
 
-#### Response (200 OK)
+**Request Body**
 
 ```json
 {
-  "data": {
-    "tasks": [
-      { "id": "t1", "title": "Draft content", "status": "TODO" }
-    ]
-  }
+  "email": "user2@demo.com",
+  "password": "User@123",
+  "role": "USER"
 }
 ```
 
-### 6.2 Create Task
+---
 
-Creates a new task within a specific project.
+### Get Users
 
-- **Endpoint:** `POST /projects/:projectId/tasks`
-- **Access:** Admin
+**GET** `/api/users`
 
-#### Request Body (JSON)
+Returns all users of the logged-in tenant.
+
+---
+
+## ✅ Task Management
+
+### Create Task
+
+**POST** `/api/tasks`
+
+**Request Body**
 
 ```json
 {
-  "title": "Fix Header Bug",
-  "description": "CSS issue on mobile",
-  "priority": "HIGH",
-  "dueDate": "2023-12-31"
+  "title": "Finish UI",
+  "description": "Complete dashboard UI"
 }
 ```
 
-### 6.3 Update Task Status
+---
 
-Quickly update a task’s status (e.g., via Kanban drag-and-drop).
+### Get All Tasks
 
-- **Endpoint:** `PATCH /tasks/:id/status`
-- **Access:** User / Admin
+**GET** `/api/tasks`
 
-#### Request Body (JSON)
+Returns all tasks for the logged-in tenant.
 
-```json
-{
-  "status": "IN_PROGRESS"
-}
-```
+---
 
-### 6.4 Update Task Details
+### Update Task
 
-Performs a full update of a task’s information.
+**PUT** `/api/tasks/:id`
 
-- **Endpoint:** `PUT /tasks/:id`
-- **Access:** Admin
+---
 
-#### Request Body (JSON)
+### Delete Task
 
-```json
-{
-  "title": "Fix Header Bug (Updated)",
-  "priority": "MEDIUM"
-}
+**DELETE** `/api/tasks/:id`
+
+---
+
+## 🔑 Authentication Rules
+
+* JWT token required for protected APIs
+* Role-based access control enforced
+* Users can access only their tenant data
+
+---
+
+## 📌 HTTP Status Codes
+
+| Code | Meaning      |
+| ---- | ------------ |
+| 200  | Success      |
+| 201  | Created      |
+| 400  | Bad Request  |
+| 401  | Unauthorized |
+| 403  | Forbidden    |
+| 500  | Server Error |
+
+---
+
+## 🧪 Testing
+
+* APIs tested using Postman
+* Docker-based environment
+* Token-based authentication
+
+---
+
+## 🔐 Sample Credentials
+
+* **Super Admin**: [superadmin@system.com](mailto:superadmin@system.com) / Admin@123
+* **Tenant User**: [user1@demo.com](mailto:user1@demo.com) / User@123
+
+---
+
+## 🚀 Deployment
+
+* Docker
+* Docker Compose
+* PostgreSQL
+
+---
