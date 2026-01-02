@@ -1,9 +1,9 @@
-🚀 ##Multi-Tenant SaaS Platform
+🚀 ## Multi-Tenant SaaS Platform
 
 A full-stack Multi-Tenant SaaS Platform that allows multiple organizations (tenants) to securely share the same application while keeping their data isolated. The system supports role-based access, project management, and centralized administration using modern web technologies.
 
 
-📌 ##Project Overview
+📌 ## Project Overview
 
 This project demonstrates how real-world SaaS applications work using multi-tenancy architecture, role-based authentication, and containerized deployment.
 It is designed for learning, demonstration, and academic evaluation.
@@ -172,6 +172,7 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
 
