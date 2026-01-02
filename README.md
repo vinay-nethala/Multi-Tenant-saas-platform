@@ -23,6 +23,7 @@ It is designed for learning, demonstration, and academic evaluation.
 🗂️ Project management per tenant
 
 🐳 Fully Dockerized (Frontend + Backend + Database)
+
 ---
 🛠️ Tech Stack
 Frontend
@@ -34,6 +35,7 @@ React Router
 Context API
 
 CSS (Custom styling)
+
 ---
 
 Backend
@@ -172,6 +174,7 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
 
