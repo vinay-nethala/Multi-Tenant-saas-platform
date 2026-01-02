@@ -56,6 +56,7 @@ Docker & Docker Compose
 JWT Authentication
 
 bcrypt (password hashing)
+
 ---
 ```bash
 
@@ -174,6 +175,7 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
 
