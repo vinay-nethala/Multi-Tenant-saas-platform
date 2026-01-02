@@ -117,7 +117,8 @@ Access the application:
 
 Frontend: http://localhost:3000
 
-Backend API: http://localhost:5000
+Backend API:http://localhost:5000/api/health
+)
 ```
 ---
 
@@ -175,6 +176,7 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
 
