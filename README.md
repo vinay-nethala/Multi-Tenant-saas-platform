@@ -49,6 +49,7 @@ Docker & Docker Compose
 JWT Authentication
 
 bcrypt (password hashing)
+```bash
 
 🧱 System Architecture (High Level)
 Client (React)
@@ -58,16 +59,20 @@ API Gateway (Express)
 Business Logic
      ↓
 Database (PostgreSQL)
+```
 
 
 Each tenant’s data is logically separated using tenant IDs.
 
 👥 User Roles
 Role	Description
+```bash
 Super Admin	Manages all tenants & system
 Admin	Manages projects within a tenant
 User	Works on assigned projects
+```
 🔑 Default Login Credentials
+```
 Super Admin
 
 Email: superadmin@system.com
@@ -79,9 +84,11 @@ Demo User
 Email: user1@demo.com
 
 Password: User@123
+```
 
 ▶️ How to Run the Project
 Prerequisites
+```
 
 Docker
 
@@ -90,13 +97,16 @@ Docker Compose
 Steps
 docker-compose down
 docker-compose up --build
+```
 
 
 Access the application:
+```
 
 Frontend: http://localhost:3000
 
 Backend API: http://localhost:4000
+```
 
 🧪 How to Test the Project
 
@@ -111,6 +121,7 @@ Create and view projects
 Verify role-based access control
 
 📂 Folder Structure (Simplified)
+```bash
 Multi-Tenant-SaaS-Platform/
 │
 ├── frontend/
@@ -124,7 +135,7 @@ Multi-Tenant-SaaS-Platform/
 │
 ├── docker-compose.yml
 └── README.md
-
+```
 🎯 Learning Outcomes
 
 Understanding multi-tenant SaaS architecture
@@ -148,5 +159,6 @@ Email notifications
 Activity audit logs
 
 CI/CD pipeline integration
+
 
 
