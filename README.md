@@ -53,7 +53,7 @@ Docker Compose
 ## How to exicuting
 ```bash
 docker-compose down
-docker-compose up --build
+docker compose up --build
 ```
 ## 🌐 Access the Application
 Service	URL
@@ -141,6 +141,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
