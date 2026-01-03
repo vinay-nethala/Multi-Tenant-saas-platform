@@ -14,7 +14,7 @@ Role-based authentication with flexible permissions (Super Admin, Admin, User)
 Containerized deployment for easy setup and scalability
 
 Ideal for learning, demos, and academic projects.
----
+----
 ## ✨ Key Features
 
 🏢 Multi-Tenancy: Data isolation per organization using tenant IDs
@@ -48,7 +48,7 @@ Database (PostgreSQL)
 
 Prerequisites
 
-Docker
+Docker 
 Docker Compose
 ## How to exicuting
 ```bash
@@ -71,7 +71,7 @@ Login as a tenant user to create and manage projects
 Verify role-based access control enforcement
 
 Explore dashboard insights and data isolation
----
+
 ## 🛠️ Technology Stack
 ##Frontend
 
@@ -141,4 +141,5 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
