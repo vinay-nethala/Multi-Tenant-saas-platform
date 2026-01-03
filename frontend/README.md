@@ -18,7 +18,9 @@ It allows users to **login**, **view projects**, and **add tasks to projects** s
 
 ---
 
+
 ## 📁 Folder Structure
+```
 frontend/
 ├── src/
 │   ├── api/            📡 API calls
@@ -31,7 +33,7 @@ frontend/
 ├── Dockerfile
 ├── package.json
 └── README.md
-
+````
 ---
 
 ## 🔑 Environment Variables
