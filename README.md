@@ -14,7 +14,7 @@ Role-based authentication with flexible permissions (Super Admin, Admin, User)
 Containerized deployment for easy setup and scalability
 
 Ideal for learning, demos, and academic projects.
-----
+
 ## ✨ Key Features
 
 🏢 Multi-Tenancy: Data isolation per organization using tenant IDs
@@ -141,6 +141,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
