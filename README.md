@@ -2,7 +2,7 @@
 
 A robust, full-stack Multi-Tenant SaaS platform that empowers multiple organizations (tenants) to securely share a single application instance while keeping their data fully isolated.
 Designed with real-world SaaS architecture principles, it supports role-based access control, project management, and centralized administration — all built with modern web technologies.
----
+
 ## 📌 Project Overview
 
 This platform simulates how enterprise SaaS applications operate at scale, featuring:
@@ -141,3 +141,4 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
