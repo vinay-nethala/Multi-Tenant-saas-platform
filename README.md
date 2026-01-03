@@ -44,6 +44,19 @@ Business Logic & Access Control
      ↓
 Database (PostgreSQL)
 ```
+## Clone the Repository
+```
+
+git clone <your-repo-url>
+cd Multi-Tenant-SaaS-Platform
+```
+Configure Environment Create a .env file in the root directory (or ensure docker-compose.yml variables are correct):
+```bash
+
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=saas_db
+```
 ## ▶️ How to Run the Project
 
 Prerequisites
@@ -141,6 +154,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
