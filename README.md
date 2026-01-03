@@ -128,7 +128,7 @@ Deploy full-stack applications using Docker
 Utilize Prisma ORM for database management
 
 Build scalable, production-ready SaaS platforms
----
+
 
 ## 📌 Future Enhancements
 
@@ -141,5 +141,6 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
