@@ -1,73 +1,151 @@
-# Welcome to your Lovable project
+# 🚀 Frontend – Multi-Tenant SaaS Platform
 
-## Project info
+## 📌 Project Overview
+This is the **Frontend application** for the **Multi-Tenant SaaS Platform**.  
+It allows users to **login**, **view projects**, and **add tasks to projects** securely.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+🖥️ Frontend Port: **3000**  
+⚙️ Backend Port: **5000**
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🛠️ Technologies Used
+✅ React  
+✅ JavaScript  
+✅ HTML & CSS  
+✅ Axios  
+✅ Docker  
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📁 Folder Structure
+frontend/
+├── src/
+│   ├── api/            📡 API calls
+│   ├── components/     🧩 Reusable components
+│   ├── pages/          📄 Pages (Login, Dashboard, Tasks)
+│   ├── context/        🔐 Auth & Global State
+│   ├── App.js
+│   └── index.js
+├── public/
+├── Dockerfile
+├── package.json
+└── README.md
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🔑 Environment Variables
+Create a `.env` file inside the frontend folder:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+REACT_APP_API_URL=http://localhost:5000/api
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## ▶️ Run Frontend Locally
+1️⃣ Install dependencies  
+npm install  
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2️⃣ Start frontend  
+npm start  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+🌐 Open in browser:  
+http://localhost:3000  
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 🐳 Run Using Docker
+docker-compose up --build  
 
-**Edit a file directly in GitHub**
+🌐 Frontend URL:  
+http://localhost:3000  
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🔗 Backend Dependency
+Frontend **requires backend** to be running.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+✅ Backend Health Check API:  
+http://localhost:5000/api/health  
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🔐 Authentication Flow
+🔹 User logs in  
+🔹 Backend returns JWT token  
+🔹 Token stored in localStorage  
+🔹 Token sent with every API request  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+📌 Request Header Format:
+Authorization: Bearer JWT_TOKEN  
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## 📝 Task Management Feature
+Users can **add tasks** to projects.
 
-## Can I connect a custom domain to my Lovable project?
+📌 API Used:
+POST /api/projects/:projectId/tasks  
 
-Yes, you can!
+📦 Request Body Example:
+{
+  "title": "Design Login Page",
+  "description": "Create UI for login page"
+}
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+🔒 Conditions:
+- User must be logged in
+- JWT token must be valid
+- Project must belong to tenant
+- User role must be allowed
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## ❌ Why Tasks May Not Be Added
+⚠️ Backend not running  
+⚠️ JWT token missing or expired  
+⚠️ Wrong projectId  
+⚠️ Incorrect API URL  
+⚠️ User role restriction  
+
+---
+
+## 🔍 How to Verify Task Creation
+✅ Login successfully  
+✅ Open Project page  
+✅ Add task using form  
+✅ Check browser Network tab  
+✅ Verify task saved in database  
+
+---
+
+## 🛑 Common Errors
+❌ Cannot GET /  
+➡️ Route does not exist  
+➡️ Use correct path: /api/health  
+
+❌ CORS Error  
+➡️ Check FRONTEND_URL in backend env  
+
+---
+
+## 🌱 Future Enhancements
+✨ Task delete feature  
+✨ Task status update (Todo → Done)  
+✨ Better UI & animations  
+✨ Role-based UI access  
+✨ Notifications  
+
+---
+
+## 🎯 Conclusion
+✅ Frontend is connected to backend  
+✅ Authentication working  
+✅ Project and Task APIs integrated  
+✅ Docker setup working  
+✅ Ready for evaluation & submission  
+
+---
+
+## 👨‍💻 Author
+Multi-Tenant SaaS Platform  
+Frontend Module 🚀
