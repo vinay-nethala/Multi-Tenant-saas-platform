@@ -70,11 +70,12 @@ docker compose up --build
 ```
 ## 🌐 Access the Application
 Service	URL
-```
-Frontend	http://localhost:3000
+Frontend	
+http://localhost:3000
 
-Backend API	http://localhost:5000/api/health
-```
+Backend API	
+http://localhost:5000/api/health
+
 ## Testing Credentials (Seed Data)
 Super Admin:
 
@@ -181,6 +182,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
