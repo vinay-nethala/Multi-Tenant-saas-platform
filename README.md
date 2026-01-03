@@ -81,6 +81,7 @@ Super Admin:
 ```
 Email: superadmin@system.com
 Password: Admin@123
+Subdomain: demo
 ```
 Tenant Admin (Demo Company):
 ```
@@ -92,11 +93,13 @@ Regural user1
 ```
 Email:user1@demo.com
 password:User@123
+Subdomain: demo
 ```
 Regural user2 
 ```
 Email:user2@demo.com
 password:User@123
+Subdomain: demo
 ```
 
 ### 🧪 How to Test
@@ -178,6 +181,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
