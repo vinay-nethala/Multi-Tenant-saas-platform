@@ -75,6 +75,30 @@ Frontend	http://localhost:3000
 
 Backend API	http://localhost:5000/api/health
 ```
+## Testing Credentials (Seed Data)
+Super Admin:
+
+```
+Email: superadmin@system.com
+Password: Admin@123
+```
+Tenant Admin (Demo Company):
+```
+Email: admin@demo.com
+Password: Demo@123
+Subdomain: demo
+```
+Regural user1 
+```
+Email:user1@demo.com
+password:User@123
+```
+Regural user2 
+```
+Email:user2@demo.com
+password:User@123
+```
+
 ### 🧪 How to Test
 
 Login with Super Admin credentials to manage tenants and system overview
@@ -154,6 +178,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
