@@ -48,7 +48,7 @@ Database (PostgreSQL)
 
 Prerequisites
 
-Docker 
+Docker &
 Docker Compose
 ## How to exicuting
 ```bash
@@ -141,6 +141,7 @@ Automated Email Notifications
 Detailed Activity Audit Logs
 
 CI/CD Pipeline for Continuous Deployment
+
 
 
 
