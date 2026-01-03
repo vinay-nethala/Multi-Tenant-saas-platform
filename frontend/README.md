@@ -146,6 +146,3 @@ POST /api/projects/:projectId/tasks
 
 ---
 
-## 👨‍💻 Author
-Multi-Tenant SaaS Platform  
-Frontend Module 🚀
